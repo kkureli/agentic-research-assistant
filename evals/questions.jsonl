@@ -1,0 +1,20 @@
+{"id": 1, "question": "What were Asteria Cloud Systems' main risk factors in Q2 2026?", "expected_sources": ["asteria_cloud_q2_2026.md"]}
+{"id": 2, "question": "How did Asteria's revenue growth change from Q1 to Q2 2026?", "expected_sources": ["asteria_cloud_q1_2026.md", "asteria_cloud_q2_2026.md"]}
+{"id": 3, "question": "Why did Asteria's revenue growth slow in Q2 2026?", "expected_sources": ["asteria_cloud_q2_2026.md"]}
+{"id": 4, "question": "How did Asteria's FY2026 revenue guidance change by Q2?", "expected_sources": ["asteria_cloud_2025_annual.md", "asteria_cloud_q2_2026.md"]}
+{"id": 5, "question": "Which risks persisted across Asteria's FY2025 report, Q1 2026, and Q2 2026?", "expected_sources": ["asteria_cloud_2025_annual.md", "asteria_cloud_q1_2026.md", "asteria_cloud_q2_2026.md"]}
+{"id": 6, "question": "What evidence suggests Asteria's slowdown is more about monetization timing than customer loss?", "expected_sources": ["asteria_cloud_q2_2026.md", "asteria_cloud_risk_notes.md"]}
+{"id": 7, "question": "How did Asteria address GPU cost pressure?", "expected_sources": ["asteria_cloud_strategy_2026.md", "asteria_cloud_q2_2026.md"]}
+{"id": 8, "question": "What is Asteria's response to cloud platform bundling?", "expected_sources": ["asteria_cloud_strategy_2026.md"]}
+{"id": 9, "question": "How did Nova Mobility's revenue growth change from Q1 to Q2 2026?", "expected_sources": ["nova_mobility_q1_2026.md", "nova_mobility_q2_2026.md"]}
+{"id": 10, "question": "Why did Nova reduce its 2026 revenue guidance?", "expected_sources": ["nova_mobility_q2_2026.md"]}
+{"id": 11, "question": "Why did Nova's gross margin improve despite slower revenue growth?", "expected_sources": ["nova_mobility_q2_2026.md", "nova_mobility_strategy_2026.md"]}
+{"id": 12, "question": "What are Nova Mobility's main international expansion risks?", "expected_sources": ["nova_mobility_strategy_2026.md", "nova_mobility_q2_2026.md"]}
+{"id": 13, "question": "Compare Asteria and Nova's Q2 2026 revenue growth.", "expected_sources": ["asteria_cloud_q2_2026.md", "nova_mobility_q2_2026.md"]}
+{"id": 14, "question": "Compare the main causes of growth slowdown at Asteria and Nova.", "expected_sources": ["asteria_cloud_q2_2026.md", "nova_mobility_q2_2026.md"]}
+{"id": 15, "question": "Which company is more exposed to AI procurement delays?", "expected_sources": ["asteria_cloud_q2_2026.md", "nova_mobility_q2_2026.md"]}
+{"id": 16, "question": "Which company benefited more clearly from a mix shift in Q2 2026?", "expected_sources": ["nova_mobility_q2_2026.md", "asteria_cloud_q2_2026.md"]}
+{"id": 17, "question": "What industry trends help explain Asteria's Q2 results?", "expected_sources": ["enterprise_ai_industry_report_2026.md", "software_market_summary_q2_2026.md", "asteria_cloud_q2_2026.md"]}
+{"id": 18, "question": "Why can AI bookings grow faster than recognized revenue?", "expected_sources": ["enterprise_ai_industry_report_2026.md", "asteria_cloud_q2_2026.md"]}
+{"id": 19, "question": "What metadata filters would be useful for retrieving company-specific quarterly information?", "expected_sources": ["research_methodology_notes.md"]}
+{"id": 20, "question": "What should a strong retrieval system avoid when comparing Asteria and Nova?", "expected_sources": ["research_methodology_notes.md"]}
