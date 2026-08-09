@@ -42,4 +42,38 @@ Final Answer + Sources
 
 ## Current Status
 
-Sprint 0 — Project Foundation
+### Sprint 0 — Project Foundation ✅
+
+- FastAPI application setup
+- Environment configuration
+- Logging
+- Docker setup
+- Qdrant setup
+- Synthetic research dataset
+- Initial evaluation dataset
+
+### Sprint 1 — Document Ingestion & Semantic Retrieval ✅
+
+- Markdown document loading
+- YAML front matter parsing
+- Metadata preservation
+- Recursive character chunking
+- OpenAI batch embeddings
+- Qdrant vector collection
+- Deterministic point IDs
+- Document ingestion pipeline
+- Cosine similarity search
+- Top-K semantic retrieval
+
+### Baseline Retrieval Findings
+
+The baseline dense retriever performs well for focused single-entity questions.
+
+Multi-entity comparison queries can retrieve incomplete context because a single query embedding may favor one entity over another.
+
+Future retrieval improvements will explore:
+
+- Query decomposition
+- Metadata filtering
+- Reranking
+- Multi-query retrieval
