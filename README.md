@@ -77,3 +77,22 @@ Future retrieval improvements will explore:
 - Metadata filtering
 - Reranking
 - Multi-query retrieval
+
+### Sprint 2 — Baseline RAG & Grounded Answer Generation ✅
+
+- OpenAI LLM integration
+- Context construction from retrieved evidence
+- Grounded system prompt
+- End-to-end RAG pipeline
+- Source-aware citations
+- Multi-evidence answers
+- No-answer behavior when evidence is insufficient
+- Baseline RAG validation
+
+### Baseline RAG Findings
+
+The baseline system performs well on focused single-entity and multi-source questions.
+
+A known limitation remains for multi-entity comparison queries: single-query dense retrieval may retrieve evidence for only one entity. The generation layer correctly refuses to fabricate missing evidence.
+
+This limitation will be addressed in Sprint 3 using query decomposition, metadata filtering, multi-query retrieval, and reranking.

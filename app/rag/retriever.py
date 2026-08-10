@@ -16,13 +16,6 @@ def retrieve(query: str, top_k: int = 5) -> list[Document]:
         limit=top_k,
     )
 
-    for item in response.points:
-        print(
-            f"Score: {item.score:.4f} | "
-            f"Source: {item.payload['source']} | "
-            f"Chunk: {item.payload['chunk_index']}"
-        )
-
     return [
         Document(
             text=item.payload["text"],
