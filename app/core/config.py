@@ -10,6 +10,7 @@ class Settings(BaseSettings):
 
     qdrant_url: str = "http://localhost:6333"
     qdrant_collection: str = "research_documents"
+    tavily_api_key: str
 
     model_config = SettingsConfigDict(
         env_file=".env",
