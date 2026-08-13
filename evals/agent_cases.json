@@ -1,0 +1,169 @@
+[
+  {
+    "id": "internal_001",
+    "question": "What was Asteria Cloud Systems' revenue growth in Q2 2026?",
+    "category": "internal_retrieval",
+
+    "required_tools": ["search_knowledge_base"],
+    "forbidden_tools": ["search_web"],
+
+    "relevant_sources": ["asteria_cloud_q2_2026.md"],
+
+    "expected_facts": [
+      "Asteria Cloud Systems' revenue growth was 17% year over year in Q2 2026"
+    ],
+
+    "expected_citation_prefixes": ["S"],
+
+    "should_answer": true
+  },
+
+  {
+    "id": "internal_002",
+    "question": "Why did Asteria's revenue growth slow down in Q2 2026?",
+    "category": "internal_retrieval",
+
+    "required_tools": ["search_knowledge_base"],
+    "forbidden_tools": ["search_web"],
+
+    "relevant_sources": ["asteria_cloud_q2_2026.md"],
+
+    "expected_facts": [
+      "Asteria's revenue growth slowed from 21% in Q1 to 17% in Q2",
+      "Longer enterprise procurement cycles contributed to the slowdown",
+      "Slower expansion from existing technology-sector customers contributed to the slowdown",
+      "Delayed conversion of AI pilots into large production contracts contributed to the slowdown"
+    ],
+
+    "expected_citation_prefixes": ["S"],
+
+    "should_answer": true
+  },
+
+  {
+    "id": "internal_003",
+    "question": "What happened to Asteria Intelligence bookings in Q2 2026?",
+    "category": "internal_retrieval",
+
+    "required_tools": ["search_knowledge_base"],
+    "forbidden_tools": ["search_web"],
+
+    "relevant_sources": ["asteria_cloud_q2_2026.md"],
+
+    "expected_facts": [
+      "Asteria Intelligence bookings grew 48% year over year in Q2 2026"
+    ],
+
+    "expected_citation_prefixes": ["S"],
+
+    "should_answer": true
+  },
+
+  {
+    "id": "internal_004",
+    "question": "How did Asteria's revenue growth change from Q1 to Q2 2026?",
+    "category": "multi_tool",
+
+    "required_tools": ["search_knowledge_base"],
+    "forbidden_tools": ["search_web"],
+
+    "relevant_sources": [
+      "asteria_cloud_q1_2026.md",
+      "asteria_cloud_q2_2026.md"
+    ],
+
+    "expected_facts": [
+      "Asteria's revenue growth was 21% year over year in Q1 2026",
+      "Asteria's revenue growth was 17% year over year in Q2 2026",
+      "Revenue growth slowed by 4 percentage points from Q1 to Q2"
+    ],
+
+    "expected_citation_prefixes": ["S"],
+
+    "should_answer": true
+  },
+
+  {
+    "id": "comparison_001",
+    "question": "Compare the main causes of growth slowdown at Asteria and Nova.",
+    "category": "internal_retrieval",
+
+    "required_tools": ["search_knowledge_base"],
+    "forbidden_tools": ["search_web"],
+
+    "relevant_sources": [
+      "asteria_cloud_q2_2026.md",
+      "nova_mobility_q2_2026.md"
+    ],
+
+    "expected_facts": [
+      "Asteria's slowdown was affected by longer enterprise procurement cycles",
+      "Asteria's slowdown was affected by slower expansion from existing technology-sector customers",
+      "Asteria's slowdown was affected by delayed conversion of AI pilots into large production contracts",
+      "Nova's slowdown was affected by hardware deployment delays",
+      "Nova's slowdown was affected by cautious capital spending among logistics-sector customers"
+    ],
+
+    "expected_citation_prefixes": ["S"],
+
+    "should_answer": true
+  },
+
+  {
+    "id": "multi_tool_001",
+    "question": "What was Asteria's revenue growth in Q2 2026 and Nova's revenue growth in Q2 2026? Calculate the percentage-point difference.",
+    "category": "multi_tool",
+
+    "required_tools": ["search_knowledge_base", "calculate"],
+    "forbidden_tools": ["search_web"],
+
+    "relevant_sources": [
+      "asteria_cloud_q2_2026.md",
+      "nova_mobility_q2_2026.md"
+    ],
+
+    "expected_facts": [
+      "Asteria's revenue growth was 17% year over year in Q2 2026",
+      "Nova Mobility's revenue growth was 14% year over year in Q2 2026",
+      "The percentage-point difference was 3 percentage points"
+    ],
+
+    "expected_citation_prefixes": ["S"],
+
+    "should_answer": true
+  },
+
+  {
+    "id": "web_001",
+    "question": "When was Galatasaray founded?",
+    "category": "web_research",
+
+    "required_tools": ["search_web"],
+    "forbidden_tools": ["search_knowledge_base"],
+
+    "relevant_sources": [],
+
+    "expected_facts": ["Galatasaray was founded in 1905"],
+
+    "expected_citation_prefixes": ["W"],
+
+    "should_answer": true
+  },
+
+  {
+    "id": "insufficient_001",
+    "question": "What was Nova Mobility's employee headcount in Q2 2026?",
+    "category": "insufficient_evidence",
+
+    "required_tools": ["search_knowledge_base"],
+    "forbidden_tools": ["search_web"],
+
+    "relevant_sources": [],
+
+    "expected_facts": [],
+
+    "expected_citation_prefixes": [],
+
+    "should_answer": false
+  }
+]

@@ -1,0 +1,213 @@
+
+Running: internal_001
+Question: What was Asteria Cloud Systems' revenue growth in Q2 2026?
+[AGENT] Step: 1
+[AGENT] Tool selected: search_knowledge_base
+[AGENT] Arguments: {'query': 'Asteria Cloud Systems revenue growth Q2 2026'}
+[RETRIEVAL] Original: Asteria Cloud Systems revenue growth Q2 2026
+[RETRIEVAL] Rewritten: Asteria Cloud Systems revenue growth for the second quarter of 2026
+[RETRIEVAL] Subqueries: ['Asteria Cloud Systems revenue growth for the second quarter of 2026']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=2026 quarter=2 document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+[RETRIEVAL] Reranked: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+Tool routing: PASS
+Actual tools: ['search_knowledge_base']
+Retrieval: PASS
+Retrieved sources: ['asteria_cloud_q2_2026.md']
+Recall:          100.00%
+Precision:       100.00%
+Reciprocal Rank: 1.000
+nDCG:            1.000
+
+Running: internal_002
+Question: Why did Asteria's revenue growth slow down in Q2 2026?
+[AGENT] Step: 1
+[AGENT] Tool selected: search_knowledge_base
+[AGENT] Arguments: {'query': 'Asteria Cloud Systems revenue growth Q2 2026'}
+[RETRIEVAL] Original: Asteria Cloud Systems revenue growth Q2 2026
+[RETRIEVAL] Rewritten: Asteria Cloud Systems revenue growth for the second quarter of 2026
+[RETRIEVAL] Subqueries: ['Asteria Cloud Systems revenue growth for the second quarter of 2026']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=2026 quarter=2 document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+[RETRIEVAL] Reranked: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+Tool routing: PASS
+Actual tools: ['search_knowledge_base']
+Retrieval: PASS
+Retrieved sources: ['asteria_cloud_q2_2026.md']
+Recall:          100.00%
+Precision:       100.00%
+Reciprocal Rank: 1.000
+nDCG:            1.000
+
+Running: internal_003
+Question: What happened to Asteria Intelligence bookings in Q2 2026?
+[AGENT] Step: 1
+[AGENT] Tool selected: search_knowledge_base
+[AGENT] Arguments: {'query': 'Asteria Intelligence bookings Q2 2026'}
+[RETRIEVAL] Original: Asteria Intelligence bookings Q2 2026
+[RETRIEVAL] Rewritten: Asteria Intelligence bookings for the second quarter of 2026
+[RETRIEVAL] Subqueries: ['Asteria Intelligence bookings for the second quarter of 2026']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=2026 quarter=2 document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+[RETRIEVAL] Reranked: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+Tool routing: PASS
+Actual tools: ['search_knowledge_base']
+Retrieval: PASS
+Retrieved sources: ['asteria_cloud_q2_2026.md']
+Recall:          100.00%
+Precision:       100.00%
+Reciprocal Rank: 1.000
+nDCG:            1.000
+
+Running: internal_004
+Question: How did Asteria's revenue growth change from Q1 to Q2 2026?
+[AGENT] Step: 1
+[AGENT] Tool selected: search_knowledge_base
+[AGENT] Arguments: {'query': 'Asteria Cloud Systems revenue growth Q1 Q2 2026'}
+[RETRIEVAL] Original: Asteria Cloud Systems revenue growth Q1 Q2 2026
+[RETRIEVAL] Rewritten: Asteria Cloud Systems revenue growth for Q1 and Q2 of 2026
+[RETRIEVAL] Subqueries: ['Asteria Cloud Systems revenue growth for Q1 of 2026', 'Asteria Cloud Systems revenue growth for Q2 of 2026']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=2026 quarter=1 document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q1_2026.md', 'asteria_cloud_q1_2026.md']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=2026 quarter=2 document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+[RETRIEVAL] Reranked: ['asteria_cloud_q1_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q1_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+Tool routing: PASS
+Actual tools: ['search_knowledge_base']
+Retrieval: PASS
+Retrieved sources: ['asteria_cloud_q1_2026.md', 'asteria_cloud_q2_2026.md']
+Recall:          100.00%
+Precision:       100.00%
+Reciprocal Rank: 1.000
+nDCG:            1.000
+
+Running: comparison_001
+Question: Compare the main causes of growth slowdown at Asteria and Nova.
+[AGENT] Step: 1
+[AGENT] Tool selected: search_knowledge_base
+[AGENT] Arguments: {'query': 'main causes of growth slowdown at Asteria Cloud Systems'}
+[RETRIEVAL] Original: main causes of growth slowdown at Asteria Cloud Systems
+[RETRIEVAL] Rewritten: factors contributing to the growth slowdown at Asteria Cloud Systems
+[RETRIEVAL] Subqueries: ['What are the internal factors contributing to the growth slowdown at Asteria Cloud Systems?', 'What are the external factors contributing to the growth slowdown at Asteria Cloud Systems?', 'How has the competitive landscape affected the growth of Asteria Cloud Systems?', 'What role do economic conditions play in the growth slowdown of Asteria Cloud Systems?', "What changes in consumer demand have impacted Asteria Cloud Systems' growth?"]
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=None quarter=None document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q1_2026.md', 'asteria_cloud_risk_notes.md', 'asteria_cloud_strategy_2026.md', 'asteria_cloud_2025_annual.md']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=None quarter=None document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q1_2026.md', 'asteria_cloud_risk_notes.md', 'asteria_cloud_strategy_2026.md', 'asteria_cloud_2025_annual.md']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=None quarter=None document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_risk_notes.md', 'asteria_cloud_q1_2026.md', 'asteria_cloud_2025_annual.md', 'asteria_cloud_strategy_2026.md']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=None quarter=None document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_risk_notes.md', 'asteria_cloud_q1_2026.md', 'asteria_cloud_strategy_2026.md', 'asteria_cloud_2025_annual.md']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=None quarter=None document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_risk_notes.md', 'asteria_cloud_q1_2026.md', 'asteria_cloud_2025_annual.md', 'asteria_cloud_strategy_2026.md']
+[RETRIEVAL] Reranked: ['asteria_cloud_q2_2026.md', 'asteria_cloud_risk_notes.md', 'asteria_cloud_q1_2026.md', 'asteria_cloud_strategy_2026.md', 'asteria_cloud_2025_annual.md']
+[AGENT] Step: 1
+[AGENT] Tool selected: search_knowledge_base
+[AGENT] Arguments: {'query': 'main causes of growth slowdown at Nova Mobility'}
+[RETRIEVAL] Original: main causes of growth slowdown at Nova Mobility
+[RETRIEVAL] Rewritten: primary factors contributing to growth deceleration at Nova Mobility
+[RETRIEVAL] Subqueries: ['What are the primary factors contributing to growth deceleration at Nova Mobility?']
+[RETRIEVAL] Retrieval filter: company_query='Nova Mobility' year=None quarter=None document_type=None
+[RETRIEVAL] Retrieved: ['nova_mobility_q1_2026.md', 'nova_mobility_q2_2026.md', 'nova_mobility_strategy_2026.md', 'nova_mobility_2025_annual.md', 'nova_mobility_2025_annual.md']
+[RETRIEVAL] Reranked: ['nova_mobility_q2_2026.md', 'nova_mobility_q1_2026.md', 'nova_mobility_strategy_2026.md', 'nova_mobility_2025_annual.md', 'nova_mobility_2025_annual.md']
+Tool routing: PASS
+Actual tools: ['search_knowledge_base']
+Retrieval: PASS
+Retrieved sources: ['asteria_cloud_q2_2026.md', 'asteria_cloud_risk_notes.md', 'asteria_cloud_q1_2026.md', 'asteria_cloud_strategy_2026.md', 'asteria_cloud_2025_annual.md', 'nova_mobility_q2_2026.md', 'nova_mobility_q1_2026.md', 'nova_mobility_strategy_2026.md', 'nova_mobility_2025_annual.md']
+Recall:          100.00%
+Precision:       22.22%
+Reciprocal Rank: 1.000
+nDCG:            0.832
+
+Running: multi_tool_001
+Question: What was Asteria's revenue growth in Q2 2026 and Nova's revenue growth in Q2 2026? Calculate the percentage-point difference.
+[AGENT] Step: 1
+[AGENT] Tool selected: search_knowledge_base
+[AGENT] Arguments: {'query': 'Asteria Cloud Systems revenue growth Q2 2026'}
+[RETRIEVAL] Original: Asteria Cloud Systems revenue growth Q2 2026
+[RETRIEVAL] Rewritten: Asteria Cloud Systems revenue growth for the second quarter of 2026
+[RETRIEVAL] Subqueries: ['Asteria Cloud Systems revenue growth for the second quarter of 2026']
+[RETRIEVAL] Retrieval filter: company_query='Asteria Cloud Systems' year=2026 quarter=2 document_type=None
+[RETRIEVAL] Retrieved: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+[RETRIEVAL] Reranked: ['asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md', 'asteria_cloud_q2_2026.md']
+[AGENT] Step: 1
+[AGENT] Tool selected: search_knowledge_base
+[AGENT] Arguments: {'query': 'Nova Mobility revenue growth Q2 2026'}
+[RETRIEVAL] Original: Nova Mobility revenue growth Q2 2026
+[RETRIEVAL] Rewritten: Nova Mobility revenue growth for the second quarter of 2026
+[RETRIEVAL] Subqueries: ['Nova Mobility revenue growth for the second quarter of 2026']
+[RETRIEVAL] Retrieval filter: company_query='Nova Mobility' year=2026 quarter=2 document_type=None
+[RETRIEVAL] Retrieved: ['nova_mobility_q2_2026.md', 'nova_mobility_q2_2026.md']
+[RETRIEVAL] Reranked: ['nova_mobility_q2_2026.md', 'nova_mobility_q2_2026.md']
+[AGENT] Step: 2
+[AGENT] Tool selected: calculate
+[AGENT] Arguments: {'operation': 'subtract', 'a': 17, 'b': 14}
+Tool routing: PASS
+Actual tools: ['search_knowledge_base', 'calculate']
+Retrieval: PASS
+Retrieved sources: ['asteria_cloud_q2_2026.md', 'nova_mobility_q2_2026.md']
+Recall:          100.00%
+Precision:       100.00%
+Reciprocal Rank: 1.000
+nDCG:            1.000
+
+Running: web_001
+Question: When was Galatasaray founded?
+[AGENT] Step: 1
+[AGENT] Tool selected: search_web
+[AGENT] Arguments: {'query': 'Galatasaray founded date'}
+Tool routing: PASS
+Actual tools: ['search_web']
+Retrieval: N/A
+Retrieved sources: []
+
+Running: insufficient_001
+Question: What was Nova Mobility's employee headcount in Q2 2026?
+[AGENT] Step: 1
+[AGENT] Tool selected: search_knowledge_base
+[AGENT] Arguments: {'query': 'Nova Mobility employee headcount Q2 2026'}
+[RETRIEVAL] Original: Nova Mobility employee headcount Q2 2026
+[RETRIEVAL] Rewritten: What was the employee headcount for Nova Mobility in Q2 2026?
+[RETRIEVAL] Subqueries: ['What was the employee headcount for Nova Mobility in Q2 2026?']
+[RETRIEVAL] Retrieval filter: company_query='Nova Mobility' year=2026 quarter=2 document_type=None
+[RETRIEVAL] Retrieved: ['nova_mobility_q2_2026.md', 'nova_mobility_q2_2026.md']
+[RETRIEVAL] Reranked: ['nova_mobility_q2_2026.md', 'nova_mobility_q2_2026.md']
+Tool routing: PASS
+Actual tools: ['search_knowledge_base']
+Retrieval: N/A
+Retrieved sources: ['nova_mobility_q2_2026.md']
+Answer evaluation: N/A
+Insufficient evidence handling: PASS
+Correctly declined: True
+
+==============================
+Evaluation Summary
+==============================
+Total cases: 8
+
+Tool Routing
+Passed:   8
+Failed:   0
+Accuracy: 100.00%
+
+Retrieval
+Applicable cases: 6
+Passed:            6
+Failed:            0
+Accuracy:          100.00%
+Average Recall:    100.00%
+Average Precision: 87.04%
+MRR:               1.000
+Average nDCG:      0.972
+
+Answer Evaluation
+Applicable cases:    7
+Passed:              7
+Failed:              0
+Accuracy:            100.00%
+Average Correctness: 100.00%
+
+Insufficient Evidence
+Applicable cases: 1
+Passed:           1
+Failed:           0
+Accuracy:         100.00%

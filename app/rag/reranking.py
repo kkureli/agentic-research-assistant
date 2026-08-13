@@ -64,38 +64,3 @@ Candidate chunks:
     )
 
     return ranked_documents[:top_k]
-
-
-if __name__ == "__main__":
-    from app.rag.query_decomposition import decompose_query
-    from app.rag.retrieval_utils import deduplicate_documents
-    from app.rag.retriever import retrieve_multiple
-
-    question = "Compare the main causes of growth slowdown at Asteria and Nova."
-
-    queries = decompose_query(question)
-
-    documents = retrieve_multiple(
-        queries,
-        top_k=5,
-    )
-
-    documents = deduplicate_documents(documents)
-
-    ranked_documents = rerank_documents(
-        question=question,
-        documents=documents,
-        top_k=5,
-    )
-
-    print(f"Original question: {question}")
-    print(f"Decomposed queries: {queries}")
-    print(f"Candidates: {len(documents)}")
-    print("-----")
-
-    for document in ranked_documents:
-        print(
-            document.metadata["chunk_id"],
-            "|",
-            document.metadata["company"],
-        )

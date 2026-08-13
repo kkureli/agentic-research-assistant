@@ -11,6 +11,7 @@ class AgentToolTrace(BaseModel):
 class AgentResult(BaseModel):
     answer: str
     traces: list[AgentToolTrace]
+    llm_call_count: int = 0
 
 
 class EvidenceAssessment(BaseModel):

@@ -11,21 +11,27 @@ def advanced_retrieve(
     question: str,
     top_k: int = 5,
 ) -> list[Document]:
-    rewritten_query = rewrite_query(question)
+    print("[RETRIEVAL] Original:", question)
 
+    rewritten_query = rewrite_query(question)
+    print("[RETRIEVAL] Rewritten:", rewritten_query)
     subqueries = decompose_query(rewritten_query)
+    print("[RETRIEVAL] Subqueries:", subqueries)
 
     documents = []
 
     for subquery in subqueries:
         retrieval_filter = extract_retrieval_filter(subquery)
-
+        print("[RETRIEVAL] Retrieval filter:", retrieval_filter)
         retrieved_documents = retrieve_hybrid_filtered(
             query=subquery,
             retrieval_filter=retrieval_filter,
             top_k=top_k,
         )
-
+        print(
+            "[RETRIEVAL] Retrieved:",
+            [doc.metadata.get("source") for doc in retrieved_documents],
+        )
         documents.extend(retrieved_documents)
 
     documents = deduplicate_documents(documents)
@@ -35,5 +41,8 @@ def advanced_retrieve(
         documents=documents,
         top_k=top_k,
     )
-
+    print(
+        "[RETRIEVAL] Reranked:",
+        [doc.metadata.get("source") for doc in documents],
+    )
     return documents

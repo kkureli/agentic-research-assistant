@@ -21,3 +21,11 @@ def search_knowledge_base(
         results.append(f"[S{index}]\nSource: {source}\nContent:\n{document.text}")
 
     return "\n\n".join(results)
+
+
+if __name__ == "__main__":
+    query = "Asteria Intelligence bookings Q2 2026"
+
+    for i in range(5):
+        print(f"\n--- RUN {i + 1} ---")
+        print(search_knowledge_base(query))
