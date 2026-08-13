@@ -10,6 +10,7 @@ def print_case_result(result: EvaluationResult) -> None:
     citation_evaluation = result.citation_evaluation
     trajectory_evaluation = result.trajectory_evaluation
     observability = result.observability
+    critic_evaluation = result.critic_evaluation
 
     # -----------------------
     # Tool routing output
@@ -145,3 +146,18 @@ def print_case_result(result: EvaluationResult) -> None:
     print(f"Latency:    {observability.latency_seconds:.2f}s")
     print(f"Tool calls: {observability.tool_call_count}")
     print(f"LLM calls:  {observability.llm_call_count}")
+
+    # -----------------------
+    # Critic evaluation output
+    # -----------------------
+
+    if critic_evaluation.applicable:
+        critic_status = "PASS" if critic_evaluation.passed else "FAIL"
+
+        print(f"Critic: {critic_status}")
+        print(f"Critic rounds: {critic_evaluation.critic_rounds}")
+        print(f"Retries: {critic_evaluation.retry_count}")
+        print(f"Initially sufficient: {critic_evaluation.initially_sufficient}")
+        print(f"Eventually sufficient: {critic_evaluation.eventually_sufficient}")
+    else:
+        print("Critic evaluation: N/A")

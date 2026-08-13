@@ -2,10 +2,22 @@ import json  # noqa: I001
 
 from openai import OpenAI
 
+from app.agents.source_critic import evaluate_evidence
 from app.agents.tool_registry import TOOL_DEFINITIONS, TOOL_FUNCTIONS
 from app.core.config import settings
 from app.schemas.agent import AgentResult, AgentToolTrace
+from app.schemas.source_critic import SourceCriticResult, SourceCriticTrace
 
+
+RESEARCH_TOOLS = {
+    "search_knowledge_base",
+    "search_web",
+}
+
+INSUFFICIENT_EVIDENCE_ANSWER = (
+    "The available evidence is insufficient to answer this question. "
+    "The requested information is unavailable in the retrieved sources."
+)
 
 SYSTEM_PROMPT = """
 You are a research assistant.
@@ -31,12 +43,13 @@ Routing rules:
 Research behavior:
 
 - Use tools when factual evidence is needed.
-- After receiving tool results, check whether the evidence is sufficient
-  to answer the user's question.
-- If important information is missing and another focused search may help,
-  perform another search using a different query.
+- After research tool results, a Source Critic may review the evidence.
+- If Source Critic says the evidence is sufficient, generate the final answer.
+  Use calculate if arithmetic is still required.
+- If Source Critic suggests a follow-up query, perform another focused search
+  with an appropriate research tool.
 - Do not repeat the same search query unnecessarily.
-- If the required information cannot be found after reasonable attempts,
+- If Source Critic says the evidence is insufficient and no follow-up is possible,
   clearly state that the available evidence is insufficient.
 - Never fill missing evidence with assumptions or guesses.
 
@@ -76,13 +89,49 @@ Answer behavior:
 client = OpenAI(api_key=settings.openai_api_key)
 
 
+def _build_critic_feedback_message(critic_result: SourceCriticResult) -> str:
+    if critic_result.sufficient:
+        return (
+            "Source Critic feedback:\n"
+            "- Evidence is sufficient to answer the question.\n"
+            "Generate the final answer now using only the available evidence. "
+            "Use calculate if arithmetic is required. "
+            "Cite evidence IDs exactly as provided. Do not invent facts."
+        )
+
+    lines = ["Source Critic feedback:"]
+
+    if critic_result.issues:
+        for issue in critic_result.issues:
+            lines.append(f"- Missing evidence: {issue}")
+    else:
+        lines.append("- Important evidence is missing.")
+
+    if critic_result.follow_up_query:
+        lines.append(
+            f"- Suggested follow-up query: {critic_result.follow_up_query}"
+        )
+        lines.append(
+            "Perform another focused search using an appropriate research tool. "
+            "Do not invent missing facts."
+        )
+
+    return "\n".join(lines)
+
+
 def run_research_agent(
     question: str,
     max_steps: int = 8,
+    max_critic_rounds: int = 2,
 ) -> AgentResult:
-    traces = []
+    traces: list[AgentToolTrace] = []
+    critic_traces: list[SourceCriticTrace] = []
     executed_tool_calls = set()
+    research_evidence_parts: list[str] = []
     llm_call_count = 0
+    critic_llm_call_count = 0
+    critic_rounds = 0
+    evidence_approved = False
 
     messages = [
         {
@@ -113,10 +162,14 @@ def run_research_agent(
                 answer=message.content or "",
                 traces=traces,
                 llm_call_count=llm_call_count,
+                critic_traces=critic_traces,
+                critic_llm_call_count=critic_llm_call_count,
             )
 
         # Keep the assistant's tool-call request in the conversation.
         messages.append(message)
+
+        round_used_research_tools = False
 
         for tool_call in message.tool_calls:
             tool_name = tool_call.function.name
@@ -145,6 +198,12 @@ def run_research_agent(
                 tool_function = TOOL_FUNCTIONS[tool_name]
                 tool_result = tool_function(**arguments)
 
+                if tool_name in RESEARCH_TOOLS:
+                    round_used_research_tools = True
+
+                    if tool_result not in research_evidence_parts:
+                        research_evidence_parts.append(tool_result)
+
             traces.append(
                 AgentToolTrace(
                     step=step + 1,
@@ -162,6 +221,67 @@ def run_research_agent(
                     "content": tool_result,
                 }
             )
+
+        if not round_used_research_tools or evidence_approved:
+            continue
+
+        if critic_rounds >= max_critic_rounds:
+            return AgentResult(
+                answer=INSUFFICIENT_EVIDENCE_ANSWER,
+                traces=traces,
+                llm_call_count=llm_call_count,
+                critic_traces=critic_traces,
+                critic_llm_call_count=critic_llm_call_count,
+            )
+
+        critic_rounds += 1
+        critic_llm_call_count += 1
+
+        critic_result = evaluate_evidence(
+            question=question,
+            evidence="\n\n".join(research_evidence_parts),
+        )
+
+        critic_traces.append(
+            SourceCriticTrace(
+                round=critic_rounds,
+                sufficient=critic_result.sufficient,
+                issues=critic_result.issues,
+                follow_up_query=critic_result.follow_up_query,
+            )
+        )
+
+        print(f"[CRITIC] Round: {critic_rounds}")
+        print(f"[CRITIC] Sufficient: {critic_result.sufficient}")
+        print(f"[CRITIC] Issues: {critic_result.issues}")
+        print(f"[CRITIC] Follow-up query: {critic_result.follow_up_query}")
+
+        if critic_result.sufficient:
+            evidence_approved = True
+            messages.append(
+                {
+                    "role": "user",
+                    "content": _build_critic_feedback_message(critic_result),
+                }
+            )
+            continue
+
+        if critic_result.follow_up_query and critic_rounds < max_critic_rounds:
+            messages.append(
+                {
+                    "role": "user",
+                    "content": _build_critic_feedback_message(critic_result),
+                }
+            )
+            continue
+
+        return AgentResult(
+            answer=INSUFFICIENT_EVIDENCE_ANSWER,
+            traces=traces,
+            llm_call_count=llm_call_count,
+            critic_traces=critic_traces,
+            critic_llm_call_count=critic_llm_call_count,
+        )
 
     raise RuntimeError(f"Research agent exceeded maximum steps: {max_steps}")
 
@@ -184,4 +304,14 @@ if __name__ == "__main__":
             f"Step {trace.step} | "
             f"Tool: {trace.tool_name} | "
             f"Arguments: {trace.arguments}"
+        )
+
+    print("Critic traces:")
+
+    for critic_trace in result.critic_traces:
+        print(
+            f"Round {critic_trace.round} | "
+            f"Sufficient: {critic_trace.sufficient} | "
+            f"Issues: {critic_trace.issues} | "
+            f"Follow-up: {critic_trace.follow_up_query}"
         )

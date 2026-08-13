@@ -50,6 +50,14 @@ class EvaluationSummaryMetrics(BaseModel):
     average_latency_seconds: float
     average_llm_calls: float
 
+    critic_total: int
+    critic_passed: int
+    critic_failed: int
+    critic_accuracy: float
+    average_critic_rounds: float
+    average_critic_retries: float
+    critic_eventual_success_rate: float
+
 
 def calculate_summary_metrics(
     results: list[EvaluationResult],
@@ -277,6 +285,54 @@ def calculate_summary_metrics(
         else 0.0
     )
 
+    # -----------------------
+    # Critic evaluation metrics
+    # -----------------------
+
+    critic_results = [
+        result.critic_evaluation
+        for result in results
+        if result.critic_evaluation.applicable
+    ]
+
+    critic_total = len(critic_results)
+
+    critic_passed = sum(
+        1 for evaluation in critic_results if evaluation.passed
+    )
+
+    critic_failed = critic_total - critic_passed
+
+    critic_accuracy = (
+        critic_passed / critic_total * 100 if critic_total > 0 else 0.0
+    )
+
+    average_critic_rounds = (
+        sum(evaluation.critic_rounds for evaluation in critic_results)
+        / critic_total
+        if critic_total > 0
+        else 0.0
+    )
+
+    average_critic_retries = (
+        sum(evaluation.retry_count for evaluation in critic_results)
+        / critic_total
+        if critic_total > 0
+        else 0.0
+    )
+
+    critic_eventual_success_rate = (
+        sum(
+            1
+            for evaluation in critic_results
+            if evaluation.eventually_sufficient
+        )
+        / critic_total
+        * 100
+        if critic_total > 0
+        else 0.0
+    )
+
     return EvaluationSummaryMetrics(
         total=total,
         tool_passed=tool_passed,
@@ -315,4 +371,11 @@ def calculate_summary_metrics(
         average_max_step=average_max_step,
         average_latency_seconds=average_latency_seconds,
         average_llm_calls=average_llm_calls,
+        critic_total=critic_total,
+        critic_passed=critic_passed,
+        critic_failed=critic_failed,
+        critic_accuracy=critic_accuracy,
+        average_critic_rounds=average_critic_rounds,
+        average_critic_retries=average_critic_retries,
+        critic_eventual_success_rate=critic_eventual_success_rate,
     )

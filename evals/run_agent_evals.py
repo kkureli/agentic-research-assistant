@@ -34,6 +34,9 @@ This script evaluates the research agent across several dimensions:
 - Observability:
   Tracks agent runtime latency, LLM calls, and tool calls.
 
+- Source Critic Evaluation:
+  Tracks critic rounds, retries, and eventual evidence sufficiency.
+
 Each evaluation case produces a PASS / FAIL / N/A result, and the script
 prints both case-level results and aggregate summary metrics.
 """
@@ -44,6 +47,7 @@ from app.agents.research_agent import run_research_agent
 from app.schemas.evaluation import EvaluationResult, ObservabilityMetrics
 from evals.answer import evaluate_answer
 from evals.citation import evaluate_citations
+from evals.critic import evaluate_critic
 from evals.faithfulness import evaluate_faithfulness
 from evals.insufficient_evidence import evaluate_insufficient_evidence
 from evals.loader import load_evaluation_cases
@@ -105,6 +109,10 @@ def run_agent_evaluations() -> list[EvaluationResult]:
             agent_result=agent_result,
         )
 
+        critic_evaluation = evaluate_critic(
+            agent_result=agent_result,
+        )
+
         result = EvaluationResult(
             case_id=case.id,
             question=case.question,
@@ -117,6 +125,7 @@ def run_agent_evaluations() -> list[EvaluationResult]:
             citation_evaluation=citation_evaluation,
             trajectory_evaluation=trajectory_evaluation,
             observability=observability,
+            critic_evaluation=critic_evaluation,
         )
 
         results.append(result)

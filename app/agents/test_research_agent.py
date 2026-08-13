@@ -2,9 +2,11 @@ from app.agents.research_agent import run_research_agent
 
 
 TEST_QUESTIONS = [
-    # Internal KB
-    "Why did Asteria's revenue growth slow down in Q2 2026?",
-    # Multi-entity + calculation
+    # Sufficient internal evidence
+    "What was Asteria Cloud Systems' revenue growth in Q2 2026?",
+    # Multi-entity comparison
+    "Compare the main causes of growth slowdown at Asteria and Nova.",
+    # Retrieval + calculation
     (
         "What was Asteria's revenue growth in Q2 2026 and "
         "Nova's revenue growth in Q2 2026? "
@@ -36,5 +38,17 @@ if __name__ == "__main__":
                 f"Tool: {trace.tool_name} | "
                 f"Arguments: {trace.arguments}"
             )
+
+        print()
+        print("CRITIC TRACE:")
+        for critic_trace in result.critic_traces:
+            print(
+                f"Round {critic_trace.round} | "
+                f"Sufficient: {critic_trace.sufficient} | "
+                f"Issues: {critic_trace.issues} | "
+                f"Follow-up: {critic_trace.follow_up_query}"
+            )
+        print(f"Research LLM calls: {result.llm_call_count}")
+        print(f"Critic LLM calls: {result.critic_llm_call_count}")
 
         print()

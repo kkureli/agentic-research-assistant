@@ -125,6 +125,15 @@ class ObservabilityMetrics(BaseModel):
     llm_call_count: int
 
 
+class CriticEvaluation(BaseModel):
+    applicable: bool
+    critic_rounds: int
+    retry_count: int
+    initially_sufficient: bool | None
+    eventually_sufficient: bool | None
+    passed: bool | None
+
+
 class EvaluationResult(BaseModel):
     case_id: str
     question: str
@@ -137,3 +146,4 @@ class EvaluationResult(BaseModel):
     citation_evaluation: CitationEvaluation
     trajectory_evaluation: TrajectoryEvaluation
     observability: ObservabilityMetrics
+    critic_evaluation: CriticEvaluation

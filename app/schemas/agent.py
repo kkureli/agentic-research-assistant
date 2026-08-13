@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+from app.schemas.source_critic import SourceCriticTrace
 
 
 class AgentToolTrace(BaseModel):
@@ -12,6 +14,8 @@ class AgentResult(BaseModel):
     answer: str
     traces: list[AgentToolTrace]
     llm_call_count: int = 0
+    critic_traces: list[SourceCriticTrace] = Field(default_factory=list)
+    critic_llm_call_count: int = 0
 
 
 class EvidenceAssessment(BaseModel):

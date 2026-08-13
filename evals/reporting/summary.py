@@ -65,3 +65,12 @@ def print_evaluation_summary(
     print(f"Avg Latency:   {metrics.average_latency_seconds:.2f}s")
     print(f"Avg LLM Calls: {metrics.average_llm_calls:.2f}")
     print(f"Avg Tool Calls: {metrics.average_tool_calls:.2f}")
+
+    print("\nCritic Evaluation")
+    print(f"Applicable cases:       {metrics.critic_total}")
+    print(f"Passed:                 {metrics.critic_passed}")
+    print(f"Failed:                 {metrics.critic_failed}")
+    print(f"Accuracy:               {metrics.critic_accuracy:.2f}%")
+    print(f"Avg Critic Rounds:      {metrics.average_critic_rounds:.2f}")
+    print(f"Avg Critic Retries:     {metrics.average_critic_retries:.2f}")
+    print(f"Eventual Sufficiency:   {metrics.critic_eventual_success_rate:.2f}%")
