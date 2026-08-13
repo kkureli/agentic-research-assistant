@@ -4,6 +4,7 @@ from fastapi.testclient import TestClient
 
 from app.core.exceptions import AgentMaxStepsError
 from app.schemas.research import ResearchResponse
+from tests.conftest import AUTH_HEADERS
 
 
 def test_health(client: TestClient) -> None:
@@ -35,6 +36,7 @@ def test_research_success(client: TestClient) -> None:
     with patch("app.api.v1.research.research", return_value=mock_response):
         response = client.post(
             "/api/v1/research",
+            headers=AUTH_HEADERS,
             json={
                 "question": "What was Asteria Cloud Systems' revenue growth in Q2 2026?"
             },
@@ -54,6 +56,7 @@ def test_research_success(client: TestClient) -> None:
 def test_research_invalid_question(client: TestClient) -> None:
     response = client.post(
         "/api/v1/research",
+        headers=AUTH_HEADERS,
         json={"question": "   "},
     )
 
@@ -71,6 +74,7 @@ def test_research_internal_failure(client: TestClient) -> None:
     ):
         response = client.post(
             "/api/v1/research",
+            headers=AUTH_HEADERS,
             json={"question": "What was Asteria's revenue growth?"},
         )
 

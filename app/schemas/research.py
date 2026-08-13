@@ -14,7 +14,7 @@ class ResearchRequest(BaseModel):
         if not value:
             raise ValueError("Question cannot be empty.")
 
-        if len(value) > settings.research_max_question_length:
+        if len(value) > settings.max_question_length:
             raise ValueError("Question is too long.")
 
         return value

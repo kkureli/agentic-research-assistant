@@ -6,7 +6,11 @@ from pydantic import BaseModel
 from app.core.config import settings
 
 
-client = OpenAI(api_key=settings.openai_api_key)
+client = OpenAI(
+    api_key=settings.openai_api_key,
+    timeout=settings.openai_timeout_seconds,
+    max_retries=settings.openai_max_retries,
+)
 
 T = TypeVar("T", bound=BaseModel)
 

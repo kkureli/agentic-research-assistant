@@ -1,0 +1,11 @@
+.venv
+.git
+.env
+.env.*
+__pycache__
+.pytest_cache
+.DS_Store
+evals
+tests
+eval_output.txt
+*.pyc

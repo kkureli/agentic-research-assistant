@@ -12,6 +12,7 @@ def search_web(
     response = client.search(
         query=query,
         max_results=max_results,
+        timeout=settings.tavily_timeout_seconds,
     )
 
     results = response.get("results", [])

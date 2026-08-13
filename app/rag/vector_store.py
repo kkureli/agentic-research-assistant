@@ -12,7 +12,10 @@ from qdrant_client.models import (
 from app.core.config import settings
 from app.schemas.document import Document
 
-client = QdrantClient(url=settings.qdrant_url)
+client = QdrantClient(
+    url=settings.qdrant_url,
+    timeout=settings.qdrant_timeout_seconds,
+)
 
 
 def create_collection() -> None:

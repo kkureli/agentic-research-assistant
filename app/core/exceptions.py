@@ -11,6 +11,24 @@ class AppError(Exception):
         super().__init__(message)
 
 
+class UnauthorizedError(AppError):
+    def __init__(self) -> None:
+        super().__init__(
+            code="unauthorized",
+            message="Invalid or missing API key.",
+            status_code=401,
+        )
+
+
+class RateLimitError(AppError):
+    def __init__(self) -> None:
+        super().__init__(
+            code="rate_limit_exceeded",
+            message="Rate limit exceeded. Try again later.",
+            status_code=429,
+        )
+
+
 class ResearchTimeoutError(AppError):
     def __init__(self) -> None:
         super().__init__(

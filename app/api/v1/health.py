@@ -12,11 +12,17 @@ router = APIRouter(tags=["health"])
 
 
 def _required_settings_available() -> bool:
-    return bool(
+    if not (
         settings.openai_api_key
         and settings.tavily_api_key
         and settings.qdrant_url
-    )
+    ):
+        return False
+
+    if settings.is_production and not settings.api_key:
+        return False
+
+    return True
 
 
 def _qdrant_is_reachable() -> bool:
