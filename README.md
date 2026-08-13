@@ -125,6 +125,28 @@ Minimal observability currently tracks:
 
 The evaluation suite uses a golden dataset containing internal retrieval, comparison, calculation, web research, and insufficient-evidence cases.
 
+## Running the API
+
+Start Qdrant, then run the API:
+
+```bash
+docker compose up -d
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+- Liveness: `GET /health`
+- Readiness: `GET /ready`
+- Research: `POST /api/v1/research`
+- OpenAPI: `http://localhost:8000/docs`
+
+Example:
+
+```bash
+curl -X POST http://localhost:8000/api/v1/research \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What was Asteria Cloud Systems'\'' revenue growth in Q2 2026?"}'
+```
+
 ## Sprint Status
 
 - Sprint 0 — Project Foundation ✅
@@ -133,8 +155,8 @@ The evaluation suite uses a golden dataset containing internal retrieval, compar
 - Sprint 3 — Advanced Retrieval ✅
 - Sprint 4 — Agentic Research Workflow ✅
 - Sprint 5 — Evaluation & Observability ✅
-- Sprint 6 — Multi-Agent / Source Critic 🔜
-- Sprint 7 — Production API & Integrations
+- Sprint 6 — Multi-Agent / Source Critic ✅
+- Sprint 7 — Production API & Integrations ✅
 - Sprint 8 — Enterprise Hardening & Governance
 
 ## Next: Multi-Agent / Source Critic

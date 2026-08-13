@@ -1,15 +1,6 @@
-import re
-
 from app.schemas.agent import AgentResult
 from app.schemas.evaluation import CitationEvaluation, EvaluationCase
-
-CITATION_PATTERN = re.compile(r"\[(S|W)(\d+)\]")
-
-
-def extract_citations(text: str) -> list[str]:
-    citations = [f"{prefix}{number}" for prefix, number in CITATION_PATTERN.findall(text)]
-
-    return list(dict.fromkeys(citations))
+from app.utils.citations import extract_citations
 
 
 def evaluate_citations(
